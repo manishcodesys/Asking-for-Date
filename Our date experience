@@ -1,0 +1,1083 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10090b">
+
+<title>To My Starlight | From MM With Love</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --black:#10090b;
+  --black2:#1b0c12;
+  --burgundy:#501326;
+  --burgundy2:#781e3b;
+  --gold:#d7ad78;
+  --gold-light:#f4d8ad;
+  --rose:#c98188;
+  --cream:#f8e9df;
+  --muted:#c4a9a4;
+}
+
+* { box-sizing:border-box; margin:0; padding:0; }
+
+html { scroll-behavior:smooth; }
+
+body {
+  min-height:100vh;
+  background:
+    radial-gradient(ellipse at 50% 0%, #431322 0%, transparent 48%),
+    linear-gradient(145deg,#10090b,#1d0d14 60%,#10090b);
+  color:var(--cream);
+  font-family:'Montserrat',sans-serif;
+  overflow-x:hidden;
+}
+
+button { font:inherit; }
+
+#universe {
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:0;
+}
+
+.star {
+  position:absolute;
+  border-radius:50%;
+  background:#f5d6a7;
+  box-shadow:0 0 8px #e9b978;
+  animation:twinkle var(--duration) ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity:.15; transform:scale(.7); }
+  to { opacity:1; transform:scale(1.4); }
+}
+
+.ambient {
+  position:fixed;
+  width:320px;
+  height:320px;
+  border-radius:50%;
+  background:#a12e52;
+  filter:blur(130px);
+  opacity:.12;
+  pointer-events:none;
+}
+
+.ambient.one { top:5%; left:-180px; }
+.ambient.two { bottom:5%; right:-180px; }
+
+.screen {
+  display:none;
+  min-height:100vh;
+  width:100%;
+  position:relative;
+  z-index:1;
+  padding:35px 20px 65px;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+}
+
+.screen.active {
+  display:flex;
+  animation:screenIn 1s cubic-bezier(.2,.7,.2,1);
+}
+
+@keyframes screenIn {
+  from { opacity:0; transform:translateY(25px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+.eyebrow {
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:5px;
+  color:var(--gold);
+  line-height:2;
+}
+
+h1,h2,h3 {
+  font-family:'Cormorant Garamond',serif;
+  font-weight:400;
+}
+
+.script {
+  font-family:'Great Vibes',cursive;
+  color:var(--gold-light);
+  font-weight:400;
+}
+
+.headline {
+  font-size:clamp(48px,9vw,88px);
+  line-height:1.05;
+  margin:22px 0;
+  font-weight:400;
+}
+
+.subtitle {
+  font-size:13px;
+  line-height:2.1;
+  color:var(--muted);
+  max-width:490px;
+  margin:12px auto;
+  font-weight:300;
+}
+
+.gold-line {
+  width:75px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:22px auto;
+}
+
+.primary {
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg,#e3c08f,#a87847);
+  color:#25120f;
+  padding:16px 32px;
+  border-radius:2px;
+  border:1px solid #f5d6a7;
+  letter-spacing:2px;
+  font-size:10px;
+  text-transform:uppercase;
+  font-weight:600;
+  cursor:pointer;
+  margin-top:25px;
+  transition:.4s;
+  box-shadow:0 5px 30px #d7ad7825;
+}
+
+.primary:hover {
+  transform:translateY(-4px);
+  box-shadow:0 10px 40px #d7ad7860;
+}
+
+.secondary {
+  background:transparent;
+  border:1px solid #d7ad7866;
+  color:var(--gold-light);
+  padding:15px 26px;
+  font-size:10px;
+  letter-spacing:2px;
+  cursor:pointer;
+  transition:.3s;
+  margin-top:15px;
+}
+
+.secondary:hover {
+  background:#d7ad7818;
+  border-color:var(--gold);
+}
+
+.signature {
+  font-family:'Great Vibes',cursive;
+  color:var(--gold);
+  font-size:34px;
+  margin-top:20px;
+}
+
+.footer {
+  position:absolute;
+  bottom:22px;
+  left:0;
+  right:0;
+  font-size:9px;
+  letter-spacing:3px;
+  color:#997d79;
+}
+
+.top-label {
+  position:absolute;
+  top:25px;
+  font-size:9px;
+  letter-spacing:3px;
+  color:#b99783;
+}
+
+.corner {
+  position:absolute;
+  width:65px;
+  height:65px;
+  border-color:#d7ad7866;
+}
+
+.corner.tl {
+  top:20px;left:20px;
+  border-top:1px solid;
+  border-left:1px solid;
+}
+.corner.tr {
+  top:20px;right:20px;
+  border-top:1px solid;
+  border-right:1px solid;
+}
+.corner.bl {
+  bottom:20px;left:20px;
+  border-bottom:1px solid;
+  border-left:1px solid;
+}
+.corner.br {
+  bottom:20px;right:20px;
+  border-bottom:1px solid;
+  border-right:1px solid;
+}
+
+/* ENVELOPE */
+
+.envelope-wrap {
+  margin:35px 0 20px;
+  perspective:1000px;
+}
+
+.envelope {
+  width:230px;
+  height:155px;
+  position:relative;
+  background:#691e35;
+  cursor:pointer;
+  box-shadow:0 20px 60px #0009,0 0 40px #b66b5722;
+  border:1px solid #d7ad7866;
+}
+
+.envelope:before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(145deg,#85304c,#4b1428);
+  clip-path:polygon(0 0,50% 60%,100% 0);
+  z-index:2;
+  transition:1s;
+  transform-origin:top;
+}
+
+.envelope:after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,#75223b,#3b101f);
+  clip-path:polygon(0 100%,50% 42%,100% 100%);
+  z-index:3;
+}
+
+.seal {
+  position:absolute;
+  width:47px;
+  height:47px;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#f6d9a8,#a87945 70%);
+  color:#542337;
+  z-index:4;
+  left:calc(50% - 23px);
+  top:67px;
+  display:grid;
+  place-items:center;
+  font-size:20px;
+  box-shadow:0 0 20px #d7ad7844;
+}
+
+.envelope:hover { transform:translateY(-5px); }
+
+.envelope.open:before {
+  transform:rotateX(180deg);
+}
+
+.letter-peek {
+  position:absolute;
+  width:90%;
+  height:120px;
+  left:5%;
+  bottom:10px;
+  background:#f5e6d6;
+  transition:1s;
+  z-index:1;
+}
+
+.envelope.open .letter-peek {
+  transform:translateY(-90px);
+}
+
+/* GLASS CARDS */
+
+.card {
+  width:min(100%,540px);
+  padding:35px 28px;
+  margin:20px auto;
+  background:linear-gradient(145deg,#ffffff0b,#ffffff04);
+  border:1px solid #d7ad783d;
+  box-shadow:0 20px 80px #0004,inset 0 0 40px #d7ad7807;
+  backdrop-filter:blur(15px);
+  position:relative;
+}
+
+.card:before {
+  content:"";
+  position:absolute;
+  top:8px;left:8px;right:8px;bottom:8px;
+  border:1px solid #d7ad781c;
+  pointer-events:none;
+}
+
+/* LOVE LETTER */
+
+.letter {
+  text-align:left;
+  padding:42px 32px;
+}
+
+.letter p {
+  color:#ddc6bd;
+  font-size:13px;
+  line-height:2.3;
+  margin:16px 0;
+  font-weight:300;
+}
+
+.letter .salutation {
+  font-family:'Great Vibes',cursive;
+  font-size:43px;
+  color:var(--gold-light);
+}
+
+/* REASONS */
+
+.reason-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  width:min(100%,560px);
+  margin:20px auto;
+}
+
+.reason {
+  min-height:165px;
+  padding:22px 15px;
+  background:linear-gradient(145deg,#54172a88,#210e1888);
+  border:1px solid #d7ad7838;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  transition:.4s;
+  cursor:pointer;
+}
+
+.reason:hover {
+  transform:translateY(-6px);
+  border-color:var(--gold);
+  background:#70203b88;
+}
+
+.reason .emoji { font-size:25px; }
+.reason h3 { font-size:23px;color:var(--gold-light); }
+.reason p {
+  font-size:11px;
+  line-height:1.8;
+  color:var(--muted);
+}
+
+/* MYSTERY */
+
+.mystery {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,6vw,46px);
+  color:var(--gold-light);
+  line-height:1.5;
+}
+
+.mystery-item {
+  padding:17px 10px;
+  border-bottom:1px solid #d7ad7833;
+}
+
+.mystery-item:last-child { border-bottom:0; }
+
+.mystery-item span {
+  display:block;
+  color:var(--gold);
+  font-size:9px;
+  letter-spacing:3px;
+  margin-bottom:8px;
+}
+
+/* DATE CARD */
+
+.date-card {
+  width:min(100%,410px);
+  padding:30px 20px;
+  margin:25px auto;
+  border:1px solid #d7ad7880;
+  background:
+    radial-gradient(ellipse at top,#70203c77,transparent 70%),
+    #1a0b11;
+  box-shadow:0 15px 70px #0008,0 0 40px #b36d5420;
+  position:relative;
+}
+
+.date-card .number {
+  font-family:'Cormorant Garamond',serif;
+  font-size:105px;
+  line-height:1.1;
+  color:var(--gold-light);
+}
+
+.date-card .month {
+  font-size:14px;
+  letter-spacing:6px;
+  color:var(--gold);
+  text-transform:uppercase;
+}
+
+.date-card .day {
+  font-size:10px;
+  letter-spacing:4px;
+  margin-top:15px;
+  color:#cbaea4;
+}
+
+.date-details {
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  margin-top:28px;
+  color:#d9b9a8;
+  font-size:10px;
+  letter-spacing:1px;
+}
+
+.date-details div span {
+  display:block;
+  font-size:22px;
+  margin-bottom:8px;
+}
+
+/* FINAL YES */
+
+.big-heart {
+  font-size:70px;
+  color:#e4a2a3;
+  filter:drop-shadow(0 0 20px #c45b7955);
+  animation:heartbeat 1.7s infinite;
+}
+
+@keyframes heartbeat {
+  0%,100% { transform:scale(1); }
+  50% { transform:scale(1.12); }
+}
+
+.celebration {
+  position:fixed;
+  pointer-events:none;
+  z-index:20;
+  animation:explode 2.8s ease-out forwards;
+}
+
+@keyframes explode {
+  0% { opacity:1;transform:translate(0,0) scale(.4) rotate(0); }
+  100% { opacity:0;transform:translate(var(--x),var(--y)) scale(1.7) rotate(360deg); }
+}
+
+.reveal-message {
+  min-height:45px;
+  color:var(--gold-light);
+  font-family:'Great Vibes',cursive;
+  font-size:34px;
+  margin-top:22px;
+}
+
+#musicNote {
+  position:fixed;
+  z-index:30;
+  top:18px;
+  right:18px;
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:1px;
+  background:#160a10;
+  border:1px solid #d7ad7844;
+  padding:10px 13px;
+}
+
+@media(max-width:500px) {
+  .reason-grid { grid-template-columns:1fr 1fr; gap:8px; }
+  .reason { padding:16px 8px;min-height:155px; }
+  .reason p { font-size:10px; }
+  .letter { padding:35px 22px; }
+  .corner { width:35px;height:35px; }
+  .date-card .number { font-size:85px; }
+}
+</style>
+</head>
+
+<body>
+
+<div id="universe"></div>
+<div class="ambient one"></div>
+<div class="ambient two"></div>
+
+<div id="musicNote">✦ MADE BY MM</div>
+
+<!-- SCREEN 1: THE INVITATION -->
+
+<section class="screen active" id="screen1">
+
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+
+  <div class="eyebrow">A private invitation · October 2026</div>
+
+  <h1 class="headline">
+    To my<br>
+    <span class="script">Starlight</span>
+  </h1>
+
+  <div class="gold-line"></div>
+
+  <p class="subtitle">
+    Some surprises are too special to be sent
+    in an ordinary message.
+  </p>
+
+  <p class="subtitle">
+    So, I made you a little something.
+    Just for you. ❤️
+  </p>
+
+  <div class="envelope-wrap">
+    <div class="envelope" id="envelope" onclick="openLetter()">
+      <div class="letter-peek"></div>
+      <div class="seal">M</div>
+    </div>
+  </div>
+
+  <div class="eyebrow">Touch the golden seal to begin</div>
+
+  <div class="signature">With love, MM</div>
+
+  <div class="footer">AN EVENING WRITTEN IN THE STARS</div>
+</section>
+
+
+<!-- SCREEN 2: PERSONAL LETTER -->
+
+<section class="screen" id="screen2">
+
+  <div class="eyebrow">Chapter I · A little something from my heart</div>
+
+  <h1 class="headline">
+    Dear <span class="script">Starlight,</span>
+  </h1>
+
+  <div class="card letter">
+
+    <p class="salutation">My favourite girl,</p>
+
+    <p>
+      I was thinking about how some people just have
+      this beautiful way of making life feel a little
+      more special.
+    </p>
+
+    <p>
+      And somehow, you happen to be that person for me.
+    </p>
+
+    <p>
+      It's the little things. The conversations, the
+      laughter, the silly moments, and even those
+      random conversations that make absolutely no sense.
+    </p>
+
+    <p>
+      I don't know how you do it, but you make ordinary
+      moments worth remembering.
+    </p>
+
+    <p>
+      And if I had to choose, I'd always choose another
+      moment with you.
+    </p>
+
+    <div class="gold-line"></div>
+
+    <p class="salutation">Always your MM ❤️</p>
+
+  </div>
+
+  <button class="primary" onclick="go(3)">
+    Turn the page ✦
+  </button>
+
+  <div class="footer">SOME FEELINGS DESERVE THEIR OWN PAGE</div>
+</section>
+
+
+<!-- SCREEN 3: REASONS -->
+
+<section class="screen" id="screen3">
+
+  <div class="eyebrow">Chapter II · A few little truths</div>
+
+  <h1 class="headline">
+    Why you're <span class="script">special</span>
+  </h1>
+
+  <p class="subtitle">
+    I could write a thousand things, but let me start
+    with just a few.
+  </p>
+
+  <div class="reason-grid">
+
+    <div class="reason">
+      <div class="emoji">✨</div>
+      <h3>Your energy</h3>
+      <p>You bring a little magic into ordinary days.</p>
+    </div>
+
+    <div class="reason">
+      <div class="emoji">🌹</div>
+      <h3>Your smile</h3>
+      <p>One of my favourite sights in this world.</p>
+    </div>
+
+    <div class="reason">
+      <div class="emoji">🌙</div>
+      <h3>Our moments</h3>
+      <p>Even the simplest memories become special.</p>
+    </div>
+
+    <div class="reason">
+      <div class="emoji">❤️</div>
+      <h3>Just you</h3>
+      <p>No particular reason. You're simply you.</p>
+    </div>
+
+  </div>
+
+  <p class="subtitle">
+    And honestly, this list could go on forever.
+  </p>
+
+  <button class="primary" onclick="go(4)">
+    There's a little surprise ahead ✦
+  </button>
+
+  <div class="footer">THE BEST THINGS ARE OFTEN THE LITTLE THINGS</div>
+</section>
+
+
+<!-- SCREEN 4: MYSTERY REVEAL -->
+
+<section class="screen" id="screen4">
+
+  <div class="eyebrow">Chapter III · A little mystery</div>
+
+  <h1 class="headline">
+    I've been <span class="script">planning...</span>
+  </h1>
+
+  <div class="big-heart">♡</div>
+
+  <div class="card">
+
+    <div class="mystery-item">
+      <span>THE COMPANY</span>
+      <div class="mystery">You & Me</div>
+    </div>
+
+    <div class="mystery-item">
+      <span>THE OCCASION</span>
+      <div class="mystery">A little date ❤️</div>
+    </div>
+
+    <div class="mystery-item">
+      <span>THE DESTINATION</span>
+      <div class="mystery">A surprise...</div>
+    </div>
+
+    <div class="mystery-item">
+      <span>THE TIME</span>
+      <div class="mystery">We'll decide together.</div>
+    </div>
+
+  </div>
+
+  <p class="subtitle">
+    I have the plan to make a memory.
+    All I need now is my favourite person.
+  </p>
+
+  <button class="primary" onclick="go(5)">
+    Okay, what's the occasion? ✦
+  </button>
+
+  <div class="footer">A LITTLE MYSTERY, A LOT OF EXCITEMENT</div>
+</section>
+
+
+<!-- SCREEN 5: THE BIG INVITATION -->
+
+<section class="screen" id="screen5">
+
+  <div class="eyebrow">Chapter IV · The most important question</div>
+
+  <div class="big-heart">♥</div>
+
+  <h1 class="headline">
+    Starlight,<br>
+    <span class="script">will you go on a date with me?</span>
+  </h1>
+
+  <p class="subtitle">
+    Not because we need a special occasion.
+    But because spending time with you is an occasion
+    worth celebrating.
+  </p>
+
+  <div class="date-card">
+
+    <div class="eyebrow">Please reserve this day</div>
+
+    <div class="number">31</div>
+
+    <div class="month">October 2026</div>
+
+    <div class="day">SATURDAY · TOMORROW</div>
+
+    <div class="gold-line"></div>
+
+    <div class="date-details">
+      <div>
+        <span>🥂</span>
+        A date
+      </div>
+      <div>
+        <span>🌹</span>
+        A surprise
+      </div>
+      <div>
+        <span>🌙</span>
+        Just us
+      </div>
+    </div>
+
+  </div>
+
+  <p class="subtitle">
+    Location? My little surprise.<br>
+    Time? We'll decide together.<br>
+    Company? Already my favourite.
+  </p>
+
+  <h2 class="script" style="font-size:37px;color:#f0d0a5">
+    So, what do you say?
+  </h2>
+
+  <button class="primary" onclick="sayYes()" style="min-width:230px">
+    YES, MM! ❤️
+  </button>
+
+  <button class="secondary" onclick="sayMaybe()">
+    I need to think... 🙈
+  </button>
+
+  <div class="reveal-message" id="reply"></div>
+
+  <div class="footer">ONE QUESTION · ONE SPECIAL DAY</div>
+</section>
+
+
+<!-- SCREEN 6: HAPPY ENDING -->
+
+<section class="screen" id="screen6">
+
+  <div class="eyebrow">A new memory awaits</div>
+
+  <div class="big-heart" style="font-size:90px">♥</div>
+
+  <h1 class="headline">
+    It's a <span class="script">Date!</span>
+  </h1>
+
+  <div class="gold-line"></div>
+
+  <div class="card">
+
+    <h2 style="font-size:36px;color:#efd2ae">
+      You just made my day, Starlight.
+    </h2>
+
+    <p class="subtitle">
+      Saturday, 31 October 2026.
+    </p>
+
+    <p class="subtitle">
+      One little surprise.<br>
+      A thousand reasons to smile.<br>
+      And hopefully another beautiful memory
+      for our collection.
+    </p>
+
+    <div class="gold-line"></div>
+
+    <p class="subtitle">
+      I'll take care of the surprise.
+      You just bring that beautiful smile.
+    </p>
+
+    <div class="signature">
+      Yours, MM ❤️
+    </div>
+
+  </div>
+
+  <button class="primary" onclick="finalSurprise()">
+    One last little thing ✦
+  </button>
+
+  <div class="footer">TO MORE MOMENTS, MORE LAUGHTER & MORE US</div>
+</section>
+
+
+<!-- SCREEN 7: FINAL MESSAGE -->
+
+<section class="screen" id="screen7">
+
+  <div class="eyebrow">A final note</div>
+
+  <h1 class="headline">
+    My favourite <span class="script">Starlight</span>
+  </h1>
+
+  <div class="card">
+
+    <div class="big-heart">♡</div>
+
+    <h2 class="script" style="font-size:47px">
+      Here's to us.
+    </h2>
+
+    <p class="subtitle">
+      No grand promises needed.
+      Just two people, a little time,
+      some laughter, and beautiful memories
+      waiting to happen.
+    </p>
+
+    <div class="gold-line"></div>
+
+    <p style="font-family:'Great Vibes';font-size:34px;color:#e6c59d">
+      You are my favourite plot twist.
+    </p>
+
+    <p class="subtitle" style="margin-top:25px">
+      Thank you for being my Starlight.
+    </p>
+
+    <div class="signature">With all my love, MM</div>
+
+  </div>
+
+  <div class="eyebrow" style="margin-top:20px">
+    31 · 10 · 2026
+  </div>
+
+  <div class="footer">THE END OF THIS PAGE · THE BEGINNING OF ANOTHER MEMORY</div>
+
+</section>
+
+
+<script>
+
+// ========================================
+// 1. CREATE THE STARLIT BACKGROUND
+// ========================================
+
+const universe = document.getElementById("universe");
+
+for(let i=0;i<100;i++) {
+  const star=document.createElement("div");
+  star.className="star";
+
+  const size=Math.random()*2.5+1;
+
+  star.style.width=size+"px";
+  star.style.height=size+"px";
+  star.style.left=Math.random()*100+"%";
+  star.style.top=Math.random()*100+"%";
+  star.style.setProperty("--duration",(2+Math.random()*5)+"s");
+  star.style.animationDelay=Math.random()*5+"s";
+
+  universe.appendChild(star);
+}
+
+
+// ========================================
+// 2. SCREEN NAVIGATION
+// ========================================
+
+function go(number) {
+
+  document.querySelectorAll(".screen").forEach(screen=>{
+    screen.classList.remove("active");
+  });
+
+  const target=document.getElementById("screen"+number);
+
+  target.classList.add("active");
+
+  window.scrollTo({top:0,behavior:"smooth"});
+
+  if(number===5) {
+    setTimeout(sparkle,500);
+  }
+}
+
+
+// ========================================
+// 3. OPEN THE ENVELOPE
+// ========================================
+
+let envelopeOpened=false;
+
+function openLetter() {
+
+  if(envelopeOpened) return;
+
+  envelopeOpened=true;
+
+  const envelope=document.getElementById("envelope");
+
+  envelope.classList.add("open");
+
+  setTimeout(()=>{
+    go(2);
+  },1200);
+}
+
+
+// ========================================
+// 4. LITTLE RESPONSES
+// ========================================
+
+function sayMaybe() {
+
+  const messages=[
+    "Take your time, Starlight. ❤️",
+    "No pressure, just a little hope from MM. 🥹",
+    "I'll be right here, hoping for a yes. 🌹",
+    "Your happiness matters most. ❤️"
+  ];
+
+  document.getElementById("reply").innerText=
+    messages[Math.floor(Math.random()*messages.length)];
+}
+
+
+// ========================================
+// 5. CELEBRATION ANIMATION
+// ========================================
+
+function sparkle() {
+
+  const symbols=["♥","✦","♡","✨","🌹","💫"];
+
+  for(let i=0;i<55;i++) {
+
+    const el=document.createElement("div");
+
+    el.className="celebration";
+    el.innerText=symbols[Math.floor(Math.random()*symbols.length)];
+
+    el.style.left=(Math.random()*100)+"vw";
+    el.style.top=(Math.random()*100)+"vh";
+    el.style.fontSize=(14+Math.random()*25)+"px";
+    el.style.color=Math.random()>.5?"#e4c08d":"#d88791";
+
+    el.style.setProperty("--x",(Math.random()*300-150)+"px");
+    el.style.setProperty("--y",(-150-Math.random()*300)+"px");
+
+    document.body.appendChild(el);
+
+    setTimeout(()=>el.remove(),3000);
+  }
+}
+
+
+// ========================================
+// 6. YES BUTTON
+// ========================================
+
+function sayYes() {
+
+  sparkle();
+
+  setTimeout(()=>{
+    go(6);
+    sparkle();
+  },600);
+
+}
+
+
+// ========================================
+// 7. FINAL SURPRISE
+// ========================================
+
+function finalSurprise() {
+
+  sparkle();
+
+  setTimeout(()=>{
+    go(7);
+    sparkle();
+  },400);
+
+}
+
+
+// ========================================
+// 8. INITIAL BACKGROUND CELEBRATION
+// ========================================
+
+setInterval(()=>{
+
+  if(Math.random()>.65) {
+
+    const star=document.createElement("div");
+
+    star.innerText="✦";
+    star.style.position="fixed";
+    star.style.left=Math.random()*100+"vw";
+    star.style.top=Math.random()*100+"vh";
+    star.style.color="#d7ad78";
+    star.style.opacity=".6";
+    star.style.pointerEvents="none";
+    star.style.zIndex="1";
+
+    document.body.appendChild(star);
+
+    setTimeout(()=>star.remove(),2500);
+  }
+
+},1000);
+
+</script>
+
+</body>
+</html>
